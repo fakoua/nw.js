@@ -39,9 +39,11 @@ void SetProxyConfigCallback(
     base::WaitableEvent* done,
     const scoped_refptr<net::URLRequestContextGetter>& url_request_context_getter,
     const net::ProxyConfigWithAnnotation& proxy_config) {
+#if 0 //FIXME
   net::ProxyResolutionService* proxy_service =
       url_request_context_getter->GetURLRequestContext()->proxy_resolution_service();
   proxy_service->ResetConfigService(base::WrapUnique(new net::ProxyConfigServiceFixed(proxy_config)));
+#endif
   done->Signal();
 }
 } // namespace
